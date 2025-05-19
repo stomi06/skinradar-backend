@@ -10,10 +10,6 @@ from dotenv import load_dotenv
 
 # Załaduj zmienne środowiskowe
 load_dotenv()
-logging.warning(f"STEAM_API_KEY: {os.getenv('STEAM_API_KEY')}")
-logging.warning(f"FRONTEND_URL: {os.getenv('FRONTEND_URL')}")
-logging.warning(f"BACKEND_URL: {os.getenv('BACKEND_URL')}")
-logging.warning(f"DATABASE_URL: {os.getenv('DATABASE_URL')}")
 
 router = APIRouter()
 
@@ -33,6 +29,11 @@ if not DATABASE_URL:
         "database": os.getenv('DB_NAME')
     }
     DATABASE_URL = f"postgresql://{db_params['user']}:{db_params['password']}@{db_params['host']}:{db_params['port']}/{db_params['database']}"
+
+logging.warning(f"STEAM_API_KEY: {os.getenv('STEAM_API_KEY')}")
+logging.warning(f"FRONTEND_URL: {os.getenv('FRONTEND_URL')}")
+logging.warning(f"BACKEND_URL: {os.getenv('BACKEND_URL')}")
+logging.warning(f"DATABASE_URL: {os.getenv('DATABASE_URL')}")
 
 async def get_db_connection():
     conn = await asyncpg.connect(DATABASE_URL)
