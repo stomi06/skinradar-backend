@@ -2,10 +2,6 @@
 .env
 .env.local
 
-# Pliki baz danych
-*.db
-*.sqlite3
-
 # Python
 __pycache__/
 *.py[cod]
